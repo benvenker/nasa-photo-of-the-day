@@ -33,32 +33,36 @@ function App() {
   return (
     <div className="App" image={image}>
       <Title title={title} />
-      <DayPicker
-        onDayClick={day => setDate(moment(day).format("YYYY-MM-DD"))}
-      />
-      <button
-        onClick={() =>
-          setDate(
-            moment(date)
-              .subtract(1, "days")
-              .format("YYYY-MM-DD")
-          )
-        }
-      >
-        Previous
-      </button>
-      <span />
-      <button
-        onClick={() =>
-          setDate(
-            moment(date)
-              .add(1, "days")
-              .format("YYYY-MM-DD")
-          )
-        }
-      >
-        Next
-      </button>
+
+      <div className="date-container">
+        <div className="date-button-group">
+          <button
+            onClick={() =>
+              setDate(
+                moment(date)
+                  .subtract(1, "days")
+                  .format("YYYY-MM-DD")
+              )
+            }
+          >
+            Previous
+          </button>
+          <DayPicker
+            onDayClick={day => setDate(moment(day).format("YYYY-MM-DD"))}
+          />
+          <button
+            onClick={() =>
+              setDate(
+                moment(date)
+                  .add(1, "days")
+                  .format("YYYY-MM-DD")
+              )
+            }
+          >
+            Next
+          </button>
+        </div>
+      </div>
       <br />
       {/* <input
         type="date"

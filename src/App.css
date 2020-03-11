@@ -49,3 +49,9 @@ span {
   width: 100px;
   margin: 20px;
 }
+
+.date-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
