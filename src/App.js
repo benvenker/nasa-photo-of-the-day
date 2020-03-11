@@ -5,10 +5,13 @@ import Image from "./components/Image";
 import Description from "./components/Description";
 import axios from "axios";
 import moment from "moment";
+import Loader from "react-loader-spinner";
 
 function App() {
   const [image, setImage] = useState([]);
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
+  const [loading, setLoading] = useState(false);
+
   console.log(
     "yesterday: ",
     moment()
@@ -18,6 +21,7 @@ function App() {
   console.log(image);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
         `https://api.nasa.gov/planetary/apod?api_key=6zwKQYuvqYPTsPVDwpyIGgu5j9TLfrjU0tKwyRK6
@@ -29,11 +33,6 @@ function App() {
   return (
     <div className="App" image={image}>
       <Title title={image.title} />
-      {<Image url={image.url} /> ? (
-        <Image url={image.url} />
-      ) : (
-        <h1>Loading...</h1>
-      )}
       <button
         onClick={() =>
           setDate(
@@ -44,7 +43,8 @@ function App() {
         }
       >
         Previous
-      </button>{" "}
+      </button>
+      <span />
       <button
         onClick={() =>
           setDate(
@@ -57,6 +57,7 @@ function App() {
         Next
       </button>
       <Description description={image.explanation} />
+      <Image url={image.url} />
     </div>
   );
 }
