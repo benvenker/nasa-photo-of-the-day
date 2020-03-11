@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Title from "./components/Title";
 import Image from "./components/Image";
+import { Button } from "reactstrap";
 import Description from "./components/Description";
 import DayPicker from "react-daypicker";
 import "react-daypicker/lib/DayPicker.css";
@@ -36,7 +38,7 @@ function App() {
 
       <div className="date-container">
         <div className="date-button-group">
-          <button
+          <Button
             onClick={() =>
               setDate(
                 moment(date)
@@ -46,13 +48,13 @@ function App() {
             }
           >
             Previous
-          </button>
+          </Button>
           <DayPicker
             onDayClick={day => {
               setDate(moment(day).format("YYYY-MM-DD"));
             }}
           />
-          <button
+          <Button
             onClick={() =>
               setDate(
                 moment(date)
@@ -62,7 +64,7 @@ function App() {
             }
           >
             Next
-          </button>
+          </Button>
         </div>
       </div>
       <br />
