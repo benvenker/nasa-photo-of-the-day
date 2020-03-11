@@ -31,6 +31,8 @@ function App() {
       .then(setLoading(false));
   }, [date]);
 
+  console.log(image);
+
   return (
     <div className="App" image={image}>
       <Title title={image.title} />
@@ -68,7 +70,12 @@ function App() {
         }}
       /> */}
       <Description description={image.explanation} />
-      {loading ? <h3>Loading...</h3> : <Image url={image.url} />}
+      {/* {loading ? <h3>Loading...</h3> : <Image url={image.url} />} */}
+      {image.media_type === "video" ? (
+        <iframe src={image.url} title="video" width="900" height="450" />
+      ) : (
+        <Image url={image.url} />
+      )}
     </div>
   );
 }
