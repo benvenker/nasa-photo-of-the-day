@@ -2,7 +2,13 @@ import React from "react";
 import "./Title.css";
 
 const Title = image => {
-  return <h1>{image.title}</h1>;
+  const { title } = image;
+  return (
+    <>
+      <h2>NASA Photo of the Day</h2>
+      <h1>{title}</h1>
+    </>
+  );
 };
 
 export default Title;

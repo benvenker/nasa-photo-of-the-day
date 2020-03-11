@@ -3,6 +3,8 @@ import "./App.css";
 import Title from "./components/Title";
 import Image from "./components/Image";
 import Description from "./components/Description";
+import DayPicker from "react-daypicker";
+import "react-daypicker/lib/DayPicker.css";
 import axios from "axios";
 import moment from "moment";
 import Loader from "react-loader-spinner";
@@ -11,13 +13,6 @@ function App() {
   const [image, setImage] = useState([]);
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [loading, setLoading] = useState(false);
-
-  console.log(
-    "yesterday: ",
-    moment()
-      .subtract(1, "days")
-      .format("YYYY-MM-DD")
-  );
 
   useEffect(() => {
     setImage([]);
@@ -29,13 +24,18 @@ function App() {
       )
       .then(response => setImage(response.data))
       .then(setLoading(false));
-  }, [date]);
+  }, [date, loading]);
 
   console.log(image);
 
+  const { title, url, explanation, media_type } = image;
+
   return (
     <div className="App" image={image}>
-      <Title title={image.title} />
+      <Title title={title} />
+      <DayPicker
+        onDayClick={day => setDate(moment(day).format("YYYY-MM-DD"))}
+      />
       <button
         onClick={() =>
           setDate(
@@ -69,12 +69,19 @@ function App() {
           setDate(newDate);
         }}
       /> */}
-      <Description description={image.explanation} />
+
+      <Description description={explanation} />
       {/* {loading ? <h3>Loading...</h3> : <Image url={image.url} />} */}
-      {image.media_type === "video" ? (
-        <iframe src={image.url} title="video" width="900" height="450" />
+      {media_type === "video" ? (
+        <iframe
+          src={url}
+          title="video"
+          width="900"
+          height="450"
+          frameBorder="black"
+        />
       ) : (
-        <Image url={image.url} />
+        <Image url={url} />
       )}
     </div>
   );

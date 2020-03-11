@@ -1,7 +1,9 @@
 import React from "react";
+import "./Image.css";
 
 const Image = image => {
-  return <img src={image.url} alt="" />;
+  const { url } = image;
+  return <img src={url} alt="" />;
 };
 
 export default Image;

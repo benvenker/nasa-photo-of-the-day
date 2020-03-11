@@ -2,7 +2,8 @@ import React from "react";
 import "./Description.css";
 
 const Description = image => {
-  return <p>{image.description}</p>;
+  const { description } = image;
+  return <p>{description}</p>;
 };
 
 export default Description;
