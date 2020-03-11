@@ -51,7 +51,7 @@ function App() {
           <DayPicker
             onDayClick={day => {
               if (day > new Date()) {
-                setDate(moment().format("YYYY-MM-DD"));
+                setDate(date);
                 alert(`Whoops, that date is in the future! Try today's date or a
                     date in the past :)`);
               } else {
@@ -75,6 +75,17 @@ function App() {
       <br />
 
       <Description description={explanation} />
+      <Button
+        onClick={() =>
+          setDate(
+            moment(date)
+              .subtract(1, "days")
+              .format("YYYY-MM-DD")
+          )
+        }
+      >
+        Previous
+      </Button>
       {media_type === "video" ? (
         <iframe
           src={url}
@@ -86,6 +97,17 @@ function App() {
       ) : (
         <Image url={url} />
       )}
+      <Button
+        onClick={() =>
+          setDate(
+            moment(date)
+              .add(1, "days")
+              .format("YYYY-MM-DD")
+          )
+        }
+      >
+        Next
+      </Button>
     </div>
   );
 }
