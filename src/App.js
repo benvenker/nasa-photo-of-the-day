@@ -8,6 +8,13 @@ import axios from "axios";
 
 function App() {
   const [image, setImage] = useState([]);
+  const currentDate = new Date();
+  const formattedDate =
+    currentDate.getFullYear() +
+    "-" +
+    (currentDate.getMonth() + 1) +
+    "-" +
+    currentDate.getDate();
 
   // image = {
   //   copyright: "T. Rector",
@@ -27,7 +34,7 @@ function App() {
     axios
       .get(
         `https://api.nasa.gov/planetary/apod?api_key=6zwKQYuvqYPTsPVDwpyIGgu5j9TLfrjU0tKwyRK6
-&date=2019-01-02`
+&date=${formattedDate}`
       )
       .then(response => setImage(response.data));
   }, []);
