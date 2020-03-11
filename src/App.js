@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import Title from "./components/Title";
 import Image from "./components/Image";
 import { Button } from "reactstrap";
@@ -9,7 +9,6 @@ import DayPicker from "react-daypicker";
 import "react-daypicker/lib/DayPicker.css";
 import axios from "axios";
 import moment from "moment";
-import Loader from "react-loader-spinner";
 
 function App() {
   const [image, setImage] = useState([]);
@@ -51,7 +50,13 @@ function App() {
           </Button>
           <DayPicker
             onDayClick={day => {
-              setDate(moment(day).format("YYYY-MM-DD"));
+              if (day > new Date()) {
+                setDate(moment().format("YYYY-MM-DD"));
+                alert(`Whoops, that date is in the future! Try today's date or a
+                    date in the past :)`);
+              } else {
+                setDate(moment(day).format("YYYY-MM-DD"));
+              }
             }}
           />
           <Button
@@ -70,7 +75,6 @@ function App() {
       <br />
 
       <Description description={explanation} />
-      {/* {loading ? <h3>Loading...</h3> : <Image url={image.url} />} */}
       {media_type === "video" ? (
         <iframe
           src={url}
