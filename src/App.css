@@ -41,8 +41,9 @@ button {
   background-color: white;
   border-radius: 5px;
   padding: 15px;
-  font-size: 1.5em;
-  width: 150px;
+  font-size: 1em;
+  width: 100px;
+  margin: 20px;
 }
 
 span {

@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="App" image={image}>
-      <Title title={title} />
+      <Title title={title} date={moment(date).format("MMMM Do, YYYY")} />
 
       <div className="date-container">
         <div className="date-button-group">
@@ -48,7 +48,9 @@ function App() {
             Previous
           </button>
           <DayPicker
-            onDayClick={day => setDate(moment(day).format("YYYY-MM-DD"))}
+            onDayClick={day => {
+              setDate(moment(day).format("YYYY-MM-DD"));
+            }}
           />
           <button
             onClick={() =>

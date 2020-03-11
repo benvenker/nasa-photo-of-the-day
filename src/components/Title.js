@@ -1,12 +1,11 @@
 import React from "react";
 import "./Title.css";
 
-const Title = image => {
-  const { title } = image;
+const Title = props => {
   return (
     <>
-      <h2>NASA Photo of the Day</h2>
-      <h1>{title}</h1>
+      <h2>NASA Photo of the Day: {props.date}</h2>
+      <h1>{props.title}</h1>
     </>
   );
 };
