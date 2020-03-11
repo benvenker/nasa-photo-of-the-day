@@ -46,6 +46,16 @@ button {
   margin: 20px;
 }
 
+button:hover {
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+}
+
+button:focus {
+  outline: none;
+}
+
 span {
   width: 100px;
   margin: 20px;
@@ -55,4 +65,8 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.react-daypicker-root {
+  height: 210px;
 }

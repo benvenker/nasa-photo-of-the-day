@@ -66,15 +66,6 @@ function App() {
         </div>
       </div>
       <br />
-      {/* <input
-        type="date"
-        onClick={() => {
-          const dateControl = document.querySelector('input[type="date"');
-          const newDate = dateControl.value;
-          console.log("newDate", newDate);
-          setDate(newDate);
-        }}
-      /> */}
 
       <Description description={explanation} />
       {/* {loading ? <h3>Loading...</h3> : <Image url={image.url} />} */}
