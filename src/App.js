@@ -75,17 +75,6 @@ function App() {
       <br />
 
       <Description description={explanation} />
-      <Button
-        onClick={() =>
-          setDate(
-            moment(date)
-              .subtract(1, "days")
-              .format("YYYY-MM-DD")
-          )
-        }
-      >
-        Previous
-      </Button>
       {media_type === "video" ? (
         <iframe
           src={url}
@@ -97,17 +86,6 @@ function App() {
       ) : (
         <Image url={url} />
       )}
-      <Button
-        onClick={() =>
-          setDate(
-            moment(date)
-              .add(1, "days")
-              .format("YYYY-MM-DD")
-          )
-        }
-      >
-        Next
-      </Button>
     </div>
   );
 }
