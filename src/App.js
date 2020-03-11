@@ -18,16 +18,17 @@ function App() {
       .subtract(1, "days")
       .format("YYYY-MM-DD")
   );
-  console.log(image);
 
   useEffect(() => {
+    setImage([]);
     setLoading(true);
     axios
       .get(
         `https://api.nasa.gov/planetary/apod?api_key=6zwKQYuvqYPTsPVDwpyIGgu5j9TLfrjU0tKwyRK6
 &date=${date}`
       )
-      .then(response => setImage(response.data));
+      .then(response => setImage(response.data))
+      .then(setLoading(false));
   }, [date]);
 
   return (
@@ -56,8 +57,18 @@ function App() {
       >
         Next
       </button>
+      <br />
+      {/* <input
+        type="date"
+        onClick={() => {
+          const dateControl = document.querySelector('input[type="date"');
+          const newDate = dateControl.value;
+          console.log("newDate", newDate);
+          setDate(newDate);
+        }}
+      /> */}
       <Description description={image.explanation} />
-      <Image url={image.url} />
+      {loading ? <h3>Loading...</h3> : <Image url={image.url} />}
     </div>
   );
 }
