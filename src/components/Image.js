@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./Image.css";
+import Loader from "react-loader-spinner";
 
-const Image = image => {
-  const { url, hdurl } = image;
+const Image = (props) => {
+  // const [loading, setLoading] = useState(props.loading);
+  const { url } = props;
   return (
-    <a href={hdurl}>
-      <img src={url} alt="" />
+    <a href={url}>
+      <img
+        src={url}
+        alt=""
+        onLoad={() => {
+          console.log("image loaded");
+          props.setLoading(false);
+        }}
+      />
     </a>
   );
 };
